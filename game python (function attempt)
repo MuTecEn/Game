@@ -1,6 +1,42 @@
 import random
 import math
 
+level = 1
+XP = []
+hp = 0
+hpmax = 100
+dp = 0
+dpmax = 100
+xp = 0
+xpmax = 100
+diff = 20
+levelup = 50 * 2**level
+score = level + xp/(levelup-xp)
+
+def monster():
+    global diff
+    diff = 4
+    global monsterhp
+    monsterhp = random.randint(diff, 2*diff)
+    global monsterdp
+    monsterdp = random.randint(diff/4, diff/2)
+print(monster())
+
+def fight():
+    global monsterhp
+    global monsterdp
+    global hp
+    global dp
+    if monsterhp > 0 and hp > 0:
+        monsterhp -= dp
+        hp -= monsterdp
+        if monsterhp < 0:
+            monsterhp = 0
+        if hp < 0:
+            hp = 0
+        print ("monster hp=", monsterhp, "monster dp=", monsterdp, "your hp=%.2f" %hp, "diff=", diff)
+print(fight())
+
 # this function prints the menu of choices after each fight that does not lead to levelup
 def menu():
     choices = "FSLE"
@@ -28,31 +64,25 @@ def menu2():
         return decision
     print("Error: you did not give one of the choices, please try again\n")
     return menu2()
-    
-def monster():
-    global diff
-    diff = 4
+
+
+def win():
     global monsterhp
-    monsterhp = random.randint(diff, 2*diff)
-    global monsterdp
-    monsterdp = random.randint(diff/4, diff/2)
-print(monster())
-    
-def fight():
-    global monsterhp
-    global monsterdp
     global hp
-    global dp
-    if monsterhp > 0 and hp > 0:
-        monsterhp -= dp
-        hp -= monsterdp
-        if monsterhp < 0:
-            monsterhp = 0
-        if hp < 0:
-            hp = 0
-        print ("monster hp=", monsterhp, "monster dp=", monsterdp, "your hp=%.2f" %hp, "diff=", diff)
-print(fight())
-    
+    global diff
+    global xp
+    # hero wins, but does not level up
+    if monsterhp <= 0 and hp > 0:
+        diff += 4
+        XP.append(xp)
+        print ("good job, you won! Your xp increased at:", xp)
+    print(menu())
+print(win())
+
+def exit():
+    print(score)
+print(exit())
+
 def menuimplementation():
     global hp
     global hpmax
@@ -97,48 +127,6 @@ def menu2implementation():
         elif decision == 'Q':
             print("your score is:%.2f" %score)
 print(menu2implementation())
-
-def win():
-    global monsterhp
-    global hp
-    global diff
-    global xp
-    # hero wins, but does not level up
-    if monsterhp <= 0 and hp > 0:
-        diff += 4
-        XP.append(xp)
-        print ("good job, you won! Your xp increased at:", xp)
-    print(menu())
-print(win())
-
-def levelup():
-    global levelup
-    global level
-    levelup = 50 * 2**level
-print(levelup())
-
-def exit():
-    print(score)
-print(exit())
-
-global level
-level = 1
-global XP
-XP = []
-global hp 
-hp = 0
-global hpmax
-hpmax = 100
-global dp
-dp = 0
-global dpmax
-dpmax = 100
-global xp
-xp = 0
-global xpmax
-xpmax = 100
-global diff
-diff = 20
 
     
 
