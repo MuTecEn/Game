@@ -36,14 +36,14 @@ def fight():
     while monsterhp > 0 and hp > 0:
         xp = monsterhp + monsterdp
         monsterhp -= dp
-        print("Hero attacks: Monster hp =", monsterhp, "/", max(monsterhp, 0))
+        print("Hero attacks: Monster %d/%d HP" % (monsterhp, max(monsterhpmax, 0)))
         if monsterhp <= 0:
             monsterhp = 0
             return True
             
         else:
             hp -= monsterdp
-            print("Monster attacks. Your hp=%df" %hp, "/", max(hpmax, 0))
+            print("Monster attacks: Your HP=%df" %(hp, max(hpmax, 0)))
         if hp <= 0:
             hp = 0
             return False
