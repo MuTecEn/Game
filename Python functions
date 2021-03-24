@@ -109,7 +109,8 @@ while True:
             if fight():
                 if xp >= xpmax:
                     levelup()
-                break
+                else:
+                    break
         elif decision == 'Q':
             print ("your score is:%.2f" % (level + xp/levelup))
             break
