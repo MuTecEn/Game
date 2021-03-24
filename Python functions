@@ -73,6 +73,6 @@ def rest(amount):
     global xp
     global xpmax
     hp += amount * hpmax / 100
-    xp -= amount * hpmax / 100
+    xp -= amount * xpmax / 100
       
 
