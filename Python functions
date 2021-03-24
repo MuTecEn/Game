@@ -25,8 +25,8 @@ def monster():
     global monsterhp
     global monsterdp
     global mosterhpmax
-    monsterhpmax = 2*diff
     monsterhp = random.randint(diff, 2*diff)
+    monsterhpmax = monsterhp
     monsterdp = random.randint(diff/4, diff/2)
     
 def fight():
