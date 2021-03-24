@@ -11,6 +11,7 @@ monsterhp = 0
 monsterdp = 0
 
 def levelup():
+    xp = 0
     level += 1
     hpmax += 20
     dp += 5
@@ -36,6 +37,7 @@ def fight():
         print("Hero attacks: Monster %d/%d HP" % (monsterhp, max(monsterhpmax, 0)))
         if monsterhp <= 0:
             monsterhp = 0
+            xp = monsterhp + monsterdp
             return True
             
         else:
@@ -95,5 +97,7 @@ def menu2():
             return decision
         print("Error: you did not give one of the choices, please try again\n")
         
+
 print("Let's Play! You will fight with a moster. Let's go!")
 while True:
+    
