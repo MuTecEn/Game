@@ -30,18 +30,17 @@ def fight():
     global hp
     while monsterhp > 0 and hp > 0:
         monsterhp -= dp
+        print("Hero attacks: Monster hp =", monsterhp, "/", max(monsterhp))
         if monsterhp <= 0:
             monsterhp = 0
             return True
             
         else:
             hp -= monsterdp
+            print("Monster attacks. Your hp=%.2f" %hp, "/", max(hpmax))
         if hp <= 0:
             hp = 0
             return False
-            
-        print("Hero attacks. Monster hp=%d / %d" %monsterhp %2*diff)
-        print("Monster attacks. Your hp=%.2f" %hp, "diff=", diff)
 
 def exit():
     global score
