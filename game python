@@ -34,16 +34,18 @@ def game():
     level = 1
     levelup = 50 * 2**level
     XP = []
-    hp = (0,100) # setting boundaries to variables
-    dp = (0,100)
-    xp = (0,100)
+    hp = 0
+    hpmax = 100
+    dp = 0
+    dpmax = 100
+    xp = 0
+    xpmax = 100
+    diff = 20
 
-    # initializing variables
+    # initializing variables for level 1
     if level == 1:
-        hp = max(hp)
+        hp = hpmax
         dp = 10
-        xp = min(xp)
-        diff = 20
         print ("let's play! Fight 1")
 
     while level >= 1:
@@ -64,49 +66,50 @@ def game():
                     monsterhp = 0
                 if hp < 0:
                     hp = 0
-                print ("monster hp=",monsterhp, "monster dp=",monsterdp, "your hp=",hp, "diff=",diff)
+                print ("monster hp=", monsterhp, "monster dp=", monsterdp, "your hp=%.2f" %hp, "diff=", diff)
 
             # hero wins, but does not level up
             if monsterhp <= 0 and hp > 0:
                 diff += 4
                 XP.append(xp)
-                print ("good job, you won! Your xp increased at:",xp)
+                print ("good job, you won! Your xp increased at:", xp)
                 break
 
             # hero dies
             elif hp <= 0:
-                return "game over! Your score is:%.2f"%score, level
+                print ("Game over. Your score is: %.2f" %score)
                 break
         # hero wins, but levels up
         if xp >= levelup:
+            level +=1
+            print ("level=", level)
             decision = menu2()
             if decision == 'N':
-                hp = (1,100)
-                dp = (1,100)
-                hp = max(hp)+20
-                dp = max(dp)+5
-                level +=1
-                print ("level=", level)
+                hp = hpmax+20
+                dp = dpmax+5
+                
             elif decision == 'Q':
-                print("your score is:%.2f"%score)
+                print("your score is:%.2f" %score)
                 break
         choice = menu()
         if choice == 'F':
             continue
         elif choice == 'S':
-            if hp < 100:
-                hp += 0.1*max(0, hp)
-                xp -= 0.1*max(0, xp)
+            if hp < hpmax:
+                hp += 0.1*hpmax
+                xp -= 0.1*xpmax
+                continue
             else:
                 print ("your energy is full")
         elif choice == 'L':
-            if hp < 100:
-                hp += 0.2*max(0, hp)
-                xp -= 0.2*max(0, xp)
+            if hp < hpmax:
+                hp += 0.2*hpmax
+                xp -= 0.2*xpmax
+                continue
             else:
                 print ("your energy is full")
         elif choice == 'E':
-            return "Your score is:%.2f" %score
-            break
+            print ("your score is: %.2f" %score)
+        break
 
 print(game())
