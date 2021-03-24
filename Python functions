@@ -37,7 +37,8 @@ def fight():
         print("Hero attacks: Monster %d/%d HP" % (monsterhp, max(monsterhpmax, 0)))
         if monsterhp <= 0:
             monsterhp = 0
-            xp = monsterhp + monsterdp
+            xp += (monsterhp + monsterdp)
+            diff += 4
             return True
             
         else:
