@@ -66,13 +66,21 @@ def fight():
             print ("Your energy is full")
         
         
-        
 def rest(amount):
     global hp
     global hpmax
     global xp
     global xpmax
-    hp += amount * hpmax / 100
-    xp -= amount * xpmax / 100
-      
+    if amount == 'short':
+        if hp < hpmax:
+            hp = min(hp + 0.1 * hpmax, hpmax)
+            xp = max(xp - 0.1 * xpmax, 0)
+        else:
+            print ("Your energy is full")
+    elif amount == 'long':
+        if hp < hpmax:
+            hp = min(hp + 0.2 * hpmax, hpmax)
+            xp = max(xp - 0.2 * xpmax, 0)
+        else:
+            print ("Your energy is full")
 
