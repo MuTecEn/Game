@@ -2,19 +2,15 @@ import random
 import math
 
 level = 1
-XP = []
 hp = 0
 hpmax = 100
-dp = 0
-dpmax = 100
+dp = 100
 xp = 0
 xpmax = 100
 diff = 20
-levelup = 50 * 2**level
-score = level + xp/levelup
 
 def levelup():
     if level > 1:
         level += 1
-        hpmax = hpmax+20
-        dpmax = dpmax+5
+        hpmax += 20
+        dp += 5
