@@ -12,40 +12,39 @@ char menu()
     printf("[S] Short rest, then fight\n");
     printf("[L] Long rest, then fight\n");
     printf("[E] Exit\n");
-    printf("-------------> Enter choice: ");
+    printf("--> Please enter your choice: ");
     scanf("%s", buffer);
     choice=buffer[0];
     if (choice>='a' && choice<='z')
-        choice = choice - 'a' + 'A'; 
+        choice = choice - 'a' + 'A';
     for (int i=0; i<5; i++)
         if (choice==choices[i])
             return choice;
     printf("Error: you did not give one of the choices, please try again\n\n");
     return menu();
 }
-   
+
 char menu2()
 {
     char choices[3] = "NQ";
     char choice;
     char buffer[80];
     printf("Please choose: \n");
-    printf("Please choose: \n");
     printf("[N] New Fight \n");
     printf("[Q] Quit \n");
-    printf("-------------> Enter choice: ");
+    printf("--> Please enter your choice: ");
     scanf("%s", buffer);
     choice=buffer[0];
     if (choice>='a' && choice<='z')
-        choice = choice - 'a' + 'A'; 
+        choice = choice - 'a' + 'A';
     for (int i=0; i<5; i++)
         if (choice==choices[i])
             return choice;
     printf("Error: you did not give one of the choices, please try again\n\n");
     return menu2();
-} 
+}
 
-int game()
+int main()
 {
     int level = 1;
     int levelup = 50 * 2^level;
@@ -59,57 +58,59 @@ int game()
         dp = 10;
         xp = 0;
         int diff = 20;
-        printf("let's play! Fight 1");   
-    
-        
+        printf("let's play! Fight 1\n");
+
+
 
         while (level>=1)
         {
             int monsterhp = diff + rand() % 2*diff;
             int monsterdp = diff/4 + rand() % diff/2;
             xp = monsterhp + monsterdp;
-            for (int i=0; i<=strlen(XP), i++)
+            for (int i=0; i<=XP[100], i++;)
             {
                 xp += XP[i];
             }
-            while (True)
+            while (xp>=0)
             {
-                if (monsterhp > 0 and hp > 0)
+                if (monsterhp > 0 && hp > 0)
                 {
                     monsterhp -= dp;
                     hp -= monsterdp;
-                    printf("monster hp and dp is: %d%d and your hp is: %d, diff, %d", monsterhp, monsterdp, hp, diff);
+                    printf("monster hp and dp is: %d %d and your hp is: %d, diff, %d\n", monsterhp, monsterdp, hp, diff);
                 }
-                if (monsterhp <= 0 and hp > 0)
+                if (monsterhp <= 0 && hp > 0)
                 {
                     diff += 4;
-                    XP.append(xp);
+                    XP[0]+=xp;
                     if (xp >= levelup)
                     {
                         level +=1;
-                        return "level is: ", level, menu2;
-                        if (choice == 1)
+                        printf("level is: %d\n", level);
+                        char choice = menu2();
+                        if (choice == 'N')
                         {
-                            return game();
+                            return main();
                         }
-                        else if (choice == 2)
+                        else if (choice == 'Q')
                         {
                             int score = level + xp/(levelup-xp);
-                            printf("your score is: %d",score);
+                            printf("your score is: %d\n",score);
                             break;
                         }
                     }
-                    printf("good job, you won! Your xp increased at %d%d", xp, level);
-                    int choice = menu();
+                    printf("good job, you won! Your xp increased at %d %d\n", xp, level);
                     break;
                 }
                 else if (hp <= 0)
                 {
-                    score = level + xp/(levelup-xp);
-                    return "game over", score, level;
+                    int score = level + xp/(levelup-xp);
+                    printf("game over %d%d\n", score, level);
                     break;
+                    return 0;
                 }
             }
+            char choice = menu();
             if (choice == 'F')
             {
                 continue;
@@ -118,44 +119,45 @@ int game()
             {
                 if (hp < 100)
                 {
-                    hp += 0.1*max(0, hp);
-                    xp -= 0.1*max(0, xp);
+                    hp += 0.1*hp;
+                    xp -= 0.1*xp;
                 }
                 else
                 {
-                    printf("your energy is full");
+                    printf("your energy is full\n");
                 }
             }
             else if (choice == 'L')
             {
                 if (hp < 100)
                 {
-                    hp += 0.2*max(0, hp);
-                    xp -= 0.2*max(0, xp);
+                    hp += 0.2*hp;
+                    xp -= 0.2*xp;
                 }
                 else
                 {
-                    printf("your energy is full");
+                    printf("your energy is full\n");
                 }
             }
             else if (choice == 'E')
             {
-                return score;
+                int score = level + xp/(levelup-xp);
+                printf("%d", score);
                 break;
             }
         }
     }
     else if (level > 1)
     {
-        while (True)
+        while (1)
         {
-            hp = max(hp)+20;
-            dp = max(dp)+5;
+            hp = hp+20;
+            dp = dp+5;
         }
     }
-        
 
-    printf(game());
+
+    return(main());
 
     return 0;
 }
