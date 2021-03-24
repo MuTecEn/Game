@@ -106,6 +106,10 @@ print("Let's Play! You will fight with a moster. Let's go!")
 while True:
     if just_leveled_up:
         decision = menu2()
+        if decision == 'N':
+            print (levelup())
+        elif decision == 'Q':
+            print ("your score is:%.2f" % (level + xp/levelup))
     else:
         choice = menu()
     
