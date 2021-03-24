@@ -9,8 +9,6 @@ xp = 0
 diff = 20
 monsterhp = 0
 monsterdp = 0
-score = level + xp/levelup
-
 
 def levelup():
     level += 1
@@ -32,7 +30,6 @@ def fight():
     global monsterhp
     global hp
     global xp
-    global score
     while monsterhp > 0 and hp > 0:
         monsterhp -= dp
         print("Hero attacks: Monster %d/%d HP" % (monsterhp, max(monsterhpmax, 0)))
@@ -46,8 +43,8 @@ def fight():
         if hp <= 0:
             hp = 0
             return False
-            
- 
+            return "Game over. Your score is:%.2f" % (level + xp/levelup)
+        
         
 def rest(amount):
     global hp
@@ -66,7 +63,7 @@ def rest(amount):
             xp = max(xp - 0.2 * xpmax, 0)
         else:
             print ("Your energy is full")
-            
+    
 # this function prints the menu of choices after each fight that does not lead to levelup
 def menu():
     choices = "FSLE"
@@ -89,10 +86,9 @@ def menu():
     elif choice == 'L':
         return rest()
     elif choice == 'E':
-        return "your score is: %.2f" %score
-        
-        
- # this function prints the menu of choices after levelup
+        return "your score is: %.2f" % (level + xp/levelup)
+
+# this function prints the menu of choices after levelup
 def menu2():
     choices = "NQ"
     print("Please choose:")
@@ -108,5 +104,5 @@ def menu2():
     if decision == 'N':
         return levelup()
     elif decision == 'Q':
-        return "your score is:%.2f" %score
+        return "your score is:%.2f" % (level + xp/levelup)
 
