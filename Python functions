@@ -7,11 +7,9 @@ hpmax = 100
 dp = 10
 xp = 0
 XP =[]
-xpmax = 100
 diff = 20
 monsterhp = 0
 monsterdp = 0
-levelup = 50*2**level
 score = level + xp/levelup
 
 
@@ -20,6 +18,7 @@ def levelup():
     hpmax += 20
     dp += 5
     hp = hpmax
+    xpmax = 50 * 2 ** level
 
 def monster():
     global monsterhp
@@ -53,17 +52,3 @@ def exit():
     global score
     if hp < 0:
         return "Game over. Your score is:%.2f" %score
-        
-def win():
-    global xp 
-    global monsterhp
-    global hp
-    global diff
-    global XP
-    while monsterhp <= 0 and hp > 0:
-        diff += 4
-        XP.append(xp)
-        print ("good job, you won! Your xp increased at:", xp)
-        # this loop sums xp that is appended in list XP
-        for i in range (0, len(XP)):
-                    xp += XP[i]
