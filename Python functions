@@ -106,7 +106,10 @@ while True:
     if just_leveled_up:
         decision = menu2()
         if decision == 'N':
-            fight()
+            if fight():
+                if xp >= xpmax:
+                    levelup()
+                break
         elif decision == 'Q':
             print ("your score is:%.2f" % (level + xp/levelup))
             break
@@ -121,5 +124,3 @@ while True:
         elif choice == 'E':
             print("your score is: %.2f" % (level + xp/levelup))
             break
-    
-    
