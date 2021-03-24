@@ -1,0 +1,111 @@
+import random
+import math
+
+# this function prints the menu of choices after each fight that does not lead to levelup
+def menu():
+    choices = "FSLE"
+    print("Please look at your options: ")
+    print("[F] Fight without resting")
+    print("[S] Short rest, then fight")
+    print("[L] Long rest, then fight")
+    print("[E] Exit")
+    choice = input("-> Please enter your choice: ")
+    choice = choice.upper()[0] # with this line we turn lowercase letters into uppercase
+    if choice in choices:
+        return choice
+    print("Error: you did not give one of the choices, please try again")
+    return menu()
+
+# this function prints the menu of choices after levelup
+def menu2():
+    choices = "NQ"
+    print("Please choose:")
+    print("[N] New Fight")
+    print("[Q] Quit")
+    decision = input("-> Please enter your choice: ")
+    decision = decision.upper()[0]
+    if decision in choices:
+        return decision
+    print("Error: you did not give one of the choices, please try again\n")
+    return menu2()
+    
+def menuimplementation():
+    choice = menu()
+        if choice == 'F':
+            continue
+        elif choice == 'S':
+            if hp < hpmax:
+                hp += 0.1*hpmax
+                xp -= 0.1*xpmax
+                continue
+            else:
+                print ("your energy is full")
+        elif choice == 'L':
+            if hp < hpmax:
+                hp += 0.2*hpmax
+                xp -= 0.2*xpmax
+                continue
+            else:
+                print ("your energy is full")
+        elif choice == 'E':
+            print ("your score is: %.2f" %score)
+print(menuimplementation())
+    
+def monster():
+    diff = 4
+    monsterhp = random.randint(diff, 2*diff)
+    monsterdp = random.randint(diff/4, diff/2)
+    return monsterhp, monsterdp
+print(monster())
+
+def menu2implementation():
+    # hero wins, but levels up
+    if xp >= levelup:
+        level +=1
+        print ("level=", level)
+        decision = menu2()
+        if decision == 'N':
+            hp = hpmax+20
+            dp = dpmax+5
+            
+        elif decision == 'Q':
+            print("your score is:%.2f" %score)
+print(menu2implementation())
+
+def fight():
+    if monsterhp > 0 and hp > 0:
+        monsterhp -= dp
+        hp -= monsterdp
+        if monsterhp < 0:
+            monsterhp = 0
+        if hp < 0:
+            hp = 0
+        print ("monster hp=", monsterhp, "monster dp=", monsterdp, "your hp=%.2f" %hp, "diff=", diff)
+print(fight())
+
+def win():
+    # hero wins, but does not level up
+    if monsterhp <= 0 and hp > 0:
+        diff += 4
+        XP.append(xp)
+        print ("good job, you won! Your xp increased at:", xp)
+    print(menu())
+print(win())
+
+def levelup():
+    levelup = 50 * 2**level
+print(levelup())
+
+def exit():
+    print(score)
+print(exit())
+
+level = 1
+XP = []
+hp = 0
+hpmax = 100
+dp = 0
+dpmax = 100
+xp = 0
+xpmax = 100
+diff = 20
