@@ -74,6 +74,10 @@ def menu():
     print("[E] Exit")
     choice = input("-> Please enter your choice: ")
     choice = choice.upper()[0] # with this line we turn lowercase letters into uppercase
+    while True:
+        if choice in choices:
+        return choice
+    print("Error: you did not give one of the choices, please try again")
     
 
 
@@ -85,30 +89,7 @@ def menu2():
     print("[Q] Quit")
     decision = input("-> Please enter your choice: ")
     decision = decision.upper()[0]
-    
-    
-while True:
-    choice = menu()
-    if choice in choices:
-        return choice
-    print("Error: you did not give one of the choices, please try again")
-    
-    if choice == 'F':
-        return fight()
-    elif choice == 'S':
-        return rest()
-    elif choice == 'L':
-        return rest()
-    elif choice == 'E':
-        return "your score is: %.2f" % (level + xp/levelup)
-
-while True:
-    decision = menu2()
-    if decision in choices:
-        return decision
-    print("Error: you did not give one of the choices, please try again\n")
-    
-    if decision == 'N':
-        return levelup()
-    elif decision == 'Q':
-        return "your score is:%.2f" % (level + xp/levelup)
+    while True:
+        if decision in choices:
+            return decision
+        print("Error: you did not give one of the choices, please try again\n")
