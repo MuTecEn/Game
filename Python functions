@@ -30,6 +30,7 @@ def fight():
     global monsterhp
     global hp
     global xp
+    monster()
     while monsterhp > 0 and hp > 0:
         monsterhp -= dp
         print("Hero attacks: Monster %d/%d HP" % (monsterhp, max(monsterhpmax, 0)))
