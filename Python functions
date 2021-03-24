@@ -10,6 +10,8 @@ xpmax = 100
 diff = 20
 monsterhp = 0
 monsterdp = 0
+levelup = 50*2**level
+score = level + xp/levelup
 
 def levelup():
     level += 1
@@ -35,5 +37,9 @@ def fight():
             hp -= monsterdp
         if hp <= 0:
             hp = 0
-            return False
         print("monster hp=", monsterhp, "monster dp=", monsterdp, "your hp=%.2f" %hp, "diff=", diff)
+
+def exit():
+    global score
+    if hp < 0:
+        return "Game over. Your score is:%.2f" %score
