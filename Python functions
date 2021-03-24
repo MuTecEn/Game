@@ -40,6 +40,8 @@ def fight():
         if monsterhp <= 0:
             monsterhp = 0
             xp += (monsterhp + monsterdp)
+            if xp >= xpmax:
+                levelup()
             diff += 4
             return True
             
@@ -50,7 +52,6 @@ def fight():
             hp = 0
             print("Game over. Your score is:%.2f" % (level + xp/levelup))
             return False
-   
         
         
 def rest(amount):
@@ -101,16 +102,13 @@ def menu2():
             return decision
         print("Error: you did not give one of the choices, please try again\n")
         
+
 print("Let's Play! You will fight with a moster. Let's go!")
 while True:
     if just_leveled_up:
         decision = menu2()
         if decision == 'N':
-            if fight():
-                if xp >= xpmax:
-                    levelup()
-                else:
-                    break
+            fight()
         elif decision == 'Q':
             print ("your score is:%.2f" % (level + xp/levelup))
             break
