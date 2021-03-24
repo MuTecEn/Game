@@ -6,12 +6,14 @@ hp = 0
 hpmax = 100
 dp = 10
 xp = 0
+XP =[]
 xpmax = 100
 diff = 20
 monsterhp = 0
 monsterdp = 0
 levelup = 50*2**level
 score = level + xp/levelup
+
 
 def levelup():
     level += 1
@@ -22,13 +24,17 @@ def levelup():
 def monster():
     global monsterhp
     global monsterdp
+    global mosterhpmax
+    monsterhpmax = 2*diff
     monsterhp = random.randint(diff, 2*diff)
     monsterdp = random.randint(diff/4, diff/2)
     
 def fight():
     global monsterhp
     global hp
+    global xp
     while monsterhp > 0 and hp > 0:
+        xp = monsterhp + monsterdp
         monsterhp -= dp
         print("Hero attacks: Monster hp =", monsterhp, "/", max(monsterhp, 0))
         if monsterhp <= 0:
@@ -37,12 +43,27 @@ def fight():
             
         else:
             hp -= monsterdp
-            print("Monster attacks. Your hp=%d" %hp, "/", max(hpmax, 0))
+            print("Monster attacks. Your hp=%df" %hp, "/", max(hpmax, 0))
         if hp <= 0:
             hp = 0
             return False
+        
 
 def exit():
     global score
     if hp < 0:
         return "Game over. Your score is:%.2f" %score
+        
+def win():
+    global xp 
+    global monsterhp
+    global hp
+    global diff
+    global XP
+    while monsterhp <= 0 and hp > 0:
+        diff += 4
+        XP.append(xp)
+        print ("good job, you won! Your xp increased at:", xp)
+        # this loop sums xp that is appended in list XP
+        for i in range (0, len(XP)):
+                    xp += XP[i]
