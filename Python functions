@@ -16,6 +16,5 @@ score = level + xp/levelup
 def levelup():
     if level > 1:
         level += 1
-        hp = hpmax+20
-        dp = dpmax+5
-    return levelup()
+        hpmax = hpmax+20
+        dpmax = dpmax+5
