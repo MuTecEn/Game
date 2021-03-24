@@ -6,7 +6,6 @@ hp = 0
 hpmax = 100
 dp = 10
 xp = 0
-XP =[]
 diff = 20
 monsterhp = 0
 monsterdp = 0
