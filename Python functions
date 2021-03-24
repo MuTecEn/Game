@@ -26,7 +26,7 @@ def monster():
 def fight():
     global monsterhp
     global hp
-    if monsterhp > 0 and hp > 0:
+    while monsterhp > 0 and hp > 0:
         monsterhp -= dp
         hp -= monsterdp
         if monsterhp < 0:
