@@ -8,6 +8,8 @@ dp = 10
 xp = 0
 xpmax = 100
 diff = 20
+monsterhp = 0
+monsterdp = 0
 
 def levelup():
     level += 1
@@ -20,3 +22,15 @@ def monster():
     global monsterdp
     monsterhp = random.randint(diff, 2*diff)
     monsterdp = random.randint(diff/4, diff/2)
+    
+def fight():
+    global monsterhp
+    global hp
+    if monsterhp > 0 and hp > 0:
+        monsterhp -= dp
+        hp -= monsterdp
+        if monsterhp < 0:
+            monsterhp = 0
+        if hp < 0:
+            hp = 0
+        print("monster hp=", monsterhp, "monster dp=", monsterdp, "your hp=%.2f" %hp, "diff=", diff)
