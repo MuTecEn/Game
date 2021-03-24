@@ -43,7 +43,7 @@ def fight():
             
         else:
             hp -= monsterdp
-            print("Monster attacks: Your HP=%df" %(hp, max(hpmax, 0)))
+            print("Monster attacks: Your %d/%d HP" % (hp, max(hpmax, 0)))
         if hp <= 0:
             hp = 0
             return False
