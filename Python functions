@@ -46,10 +46,5 @@ def fight():
         if hp <= 0:
             hp = 0
             return False
-            return "Game over. Your score is:%.2f" %score
-        
+      
 
-def exit():
-    global score
-    if hp < 0:
-        return "Game over. Your score is:%.2f" %score
