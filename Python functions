@@ -16,5 +16,7 @@ def levelup():
     hp = hpmax
 
 def monster():
+    global monsterhp
+    global monsterdp
     monsterhp = random.randint(diff, 2*diff)
     monsterdp = random.randint(diff/4, diff/2)
