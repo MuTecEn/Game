@@ -11,7 +11,10 @@ monsterhp = 0
 monsterdp = 0
 just_leveled_up = True
 
+
 def levelup():
+    global just_leveled_up
+    just_leveled_up = True
     xp = 0
     level += 1
     hpmax += 20
