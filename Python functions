@@ -12,14 +12,7 @@ monsterdp = 0
 just_leveled_up = True
 
 def levelup():
-    global just_leveled_up
-    global xp
-    global level
-    global hpmax
-    global dp
-    global hp
-    global hpmax
-    global xmax
+    global just_leveled_up, xp, level, hpmax, dp, hp, hpmax, xpmax
     just_leveled_up = True
     xp = 0
     level += 1
@@ -28,7 +21,6 @@ def levelup():
     hp = hpmax
     xpmax = 50 * 2 ** level
     print("You leveled up! Your HP now is %d and your DP is %d" % (hp, dp))
-
 
 def monster():
     global monsterhp
