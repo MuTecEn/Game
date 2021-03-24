@@ -104,7 +104,7 @@ def menu2():
 
 print("Let's Play! You will fight with a moster. Let's go!")
 while True:
-    if just_leveled_up == True:
+    if just_leveled_up:
         print(menu2())
     else:
         print(menu())
