@@ -30,16 +30,19 @@ def menu2():
     return menu2()
     
 def monster():
+    global diff
     diff = 4
+    global monsterhp
     monsterhp = random.randint(diff, 2*diff)
+    global monsterdp
     monsterdp = random.randint(diff/4, diff/2)
-    return monsterhp, monsterdp
-    return
 print(monster())
     
 def fight():
-    monsterhp*=monsterhp
-    monsterdp*=monsterdp
+    global monsterhp
+    global monsterdp
+    global hp
+    global dp
     if monsterhp > 0 and hp > 0:
         monsterhp -= dp
         hp -= monsterdp
@@ -51,6 +54,10 @@ def fight():
 print(fight())
     
 def menuimplementation():
+    global hp
+    global hpmax
+    global xp
+    global xpmax
     choice = menu()
     if choice == 'F':
         print(fight())
@@ -71,6 +78,13 @@ def menuimplementation():
 print(menuimplementation())
 
 def menu2implementation():
+    global xp
+    global levelup
+    global level
+    global hp
+    global hpmax
+    global dp
+    global dpmax
     # hero wins, but levels up
     if xp >= levelup:
         level +=1
@@ -85,6 +99,10 @@ def menu2implementation():
 print(menu2implementation())
 
 def win():
+    global monsterhp
+    global hp
+    global diff
+    global xp
     # hero wins, but does not level up
     if monsterhp <= 0 and hp > 0:
         diff += 4
@@ -94,6 +112,8 @@ def win():
 print(win())
 
 def levelup():
+    global levelup
+    global level
     levelup = 50 * 2**level
 print(levelup())
 
@@ -101,14 +121,23 @@ def exit():
     print(score)
 print(exit())
 
+global level
 level = 1
+global XP
 XP = []
+global hp 
 hp = 0
+global hpmax
 hpmax = 100
+global dp
 dp = 0
+global dpmax
 dpmax = 100
+global xp
 xp = 0
+global xpmax
 xpmax = 100
+global diff
 diff = 20
 
     
