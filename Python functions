@@ -78,16 +78,7 @@ def menu():
         return choice
     print("Error: you did not give one of the choices, please try again")
     
-    choice = menu()
-    if choice == 'F':
-        return fight()
-    elif choice == 'S':
-        return rest()
-    elif choice == 'L':
-        return rest()
-    elif choice == 'E':
-        return "your score is: %.2f" % (level + xp/levelup)
-
+   
 # this function prints the menu of choices after levelup
 def menu2():
     choices = "NQ"
@@ -99,10 +90,5 @@ def menu2():
     if decision in choices:
         return decision
     print("Error: you did not give one of the choices, please try again\n")
-    
-    decision = menu2()
-    if decision == 'N':
-        return levelup()
-    elif decision == 'Q':
-        return "your score is:%.2f" % (level + xp/levelup)
+
 
