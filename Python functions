@@ -11,6 +11,7 @@ xpmax = 100
 diff = 20
 monsterhp = 0
 monsterdp = 0
+monsterhpmax = monsterhp
 levelup = 50*2**level
 score = level + xp/levelup
 
@@ -26,7 +27,6 @@ def monster():
     global monsterdp
     global mosterhpmax
     monsterhp = random.randint(diff, 2*diff)
-    monsterhpmax = monsterhp
     monsterdp = random.randint(diff/4, diff/2)
     
 def fight():
