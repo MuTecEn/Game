@@ -47,8 +47,9 @@ def fight():
             print("Monster attacks: Your %d/%d HP" % (hp, max(hpmax, 0)))
         if hp <= 0:
             hp = 0
-            return False
             return "Game over. Your score is:%.2f" % (level + xp/levelup)
+            return False
+   
         
         
 def rest(amount):
