@@ -29,34 +29,46 @@ def menu2():
     print("Error: you did not give one of the choices, please try again\n")
     return menu2()
     
-def menuimplementation():
-    choice = menu()
-        if choice == 'F':
-            continue
-        elif choice == 'S':
-            if hp < hpmax:
-                hp += 0.1*hpmax
-                xp -= 0.1*xpmax
-                continue
-            else:
-                print ("your energy is full")
-        elif choice == 'L':
-            if hp < hpmax:
-                hp += 0.2*hpmax
-                xp -= 0.2*xpmax
-                continue
-            else:
-                print ("your energy is full")
-        elif choice == 'E':
-            print ("your score is: %.2f" %score)
-print(menuimplementation())
-    
 def monster():
     diff = 4
     monsterhp = random.randint(diff, 2*diff)
     monsterdp = random.randint(diff/4, diff/2)
     return monsterhp, monsterdp
+    return
 print(monster())
+    
+def fight():
+    monsterhp*=monsterhp
+    monsterdp*=monsterdp
+    if monsterhp > 0 and hp > 0:
+        monsterhp -= dp
+        hp -= monsterdp
+        if monsterhp < 0:
+            monsterhp = 0
+        if hp < 0:
+            hp = 0
+        print ("monster hp=", monsterhp, "monster dp=", monsterdp, "your hp=%.2f" %hp, "diff=", diff)
+print(fight())
+    
+def menuimplementation():
+    choice = menu()
+    if choice == 'F':
+        print(fight())
+    elif choice == 'S':
+        if hp < hpmax:
+            hp += 0.1*hpmax
+            xp -= 0.1*xpmax
+        else:
+            print ("your energy is full")
+    elif choice == 'L':
+        if hp < hpmax:
+            hp += 0.2*hpmax
+            xp -= 0.2*xpmax
+        else:
+            print ("your energy is full")
+    elif choice == 'E':
+        print ("your score is: %.2f" %score)
+print(menuimplementation())
 
 def menu2implementation():
     # hero wins, but levels up
@@ -71,17 +83,6 @@ def menu2implementation():
         elif decision == 'Q':
             print("your score is:%.2f" %score)
 print(menu2implementation())
-
-def fight():
-    if monsterhp > 0 and hp > 0:
-        monsterhp -= dp
-        hp -= monsterdp
-        if monsterhp < 0:
-            monsterhp = 0
-        if hp < 0:
-            hp = 0
-        print ("monster hp=", monsterhp, "monster dp=", monsterdp, "your hp=%.2f" %hp, "diff=", diff)
-print(fight())
 
 def win():
     # hero wins, but does not level up
@@ -109,3 +110,7 @@ dpmax = 100
 xp = 0
 xpmax = 100
 diff = 20
+
+    
+
+
