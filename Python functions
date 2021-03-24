@@ -19,6 +19,8 @@ def levelup():
     dp += 5
     hp = hpmax
     xpmax = 50 * 2 ** level
+    print("dude you're so awesome, your HP is %d, and your punches are %d" %(hp, dp)) 
+    print("You leveled up! Your HP now is %d and your DP is %d" % (hp, dp))
 
 def monster():
     global monsterhp
