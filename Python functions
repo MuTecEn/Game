@@ -101,7 +101,6 @@ def menu2():
             return decision
         print("Error: you did not give one of the choices, please try again\n")
         
-
 print("Let's Play! You will fight with a moster. Let's go!")
 while True:
     if just_leveled_up:
@@ -110,7 +109,17 @@ while True:
             levelup()
         elif decision == 'Q':
             print ("your score is:%.2f" % (level + xp/levelup))
+            break
     else:
         choice = menu()
+        if choice == 'F':
+            fight()
+        elif choice == 'S':
+            rest()
+        elif choice == 'L':
+            rest()
+        elif choice == 'E':
+            print("your score is: %.2f" % (level + xp/levelup))
+            break
     
     
