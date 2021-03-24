@@ -28,12 +28,12 @@ def fight():
     global hp
     while monsterhp > 0 and hp > 0:
         monsterhp -= dp
-        if monsterhp < 0:
+        if monsterhp <= 0:
             monsterhp = 0
             return True
         else:
             hp -= monsterdp
-        if hp < 0:
+        if hp <= 0:
             hp = 0
             return False
         print("monster hp=", monsterhp, "monster dp=", monsterdp, "your hp=%.2f" %hp, "diff=", diff)
