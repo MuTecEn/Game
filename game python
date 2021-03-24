@@ -1,0 +1,112 @@
+import random
+import math
+
+# this function prints the menu of choices after each fight that does not lead to levelup
+def menu():
+    choices = "FSLE"
+    print("Please look at your options: ")
+    print("[F] Fight without resting")
+    print("[S] Short rest, then fight")
+    print("[L] Long rest, then fight")
+    print("[E] Exit")
+    choice = input("-> Please enter your choice: ")
+    choice = choice.upper()[0] # with this line we turn lowercase letters into uppercase
+    if choice in choices:
+        return choice
+    print("Error: you did not give one of the choices, please try again")
+    return menu()
+
+# this function prints the menu of choices after levelup
+def menu2():
+    choices = "NQ"
+    print("Please choose:")
+    print("[N] New Fight")
+    print("[Q] Quit")
+    decision = input("-> Please enter your choice: ")
+    decision = decision.upper()[0]
+    if decision in choices:
+        return decision
+    print("Error: you did not give one of the choices, please try again\n")
+    return menu2()
+
+# this function is used for the fight
+def game():
+    level = 1
+    levelup = 50 * 2**level
+    XP = []
+    hp = (0,100) # setting boundaries to variables
+    dp = (0,100)
+    xp = (0,100)
+
+    # initializing variables
+    if level == 1:
+        hp = max(hp)
+        dp = 10
+        xp = min(xp)
+        diff = 20
+        print ("let's play! Fight 1")
+
+    while level >= 1:
+        monsterhp = random.randint(diff, 2*diff)
+        monsterdp = random.randint(diff/4, diff/2)
+        xp = monsterhp + monsterdp
+        score = level + xp/(levelup-xp)
+
+        # this loop sums xp that is appended in list XP
+        for i in range (0, len(XP)):
+                    xp += XP[i]
+
+        while True:
+            if monsterhp > 0 and hp > 0:
+                monsterhp -= dp
+                hp -= monsterdp
+                if monsterhp < 0:
+                    monsterhp = 0
+                if hp < 0:
+                    hp = 0
+                print ("monster hp=",monsterhp, "monster dp=",monsterdp, "your hp=",hp, "diff=",diff)
+
+            # hero wins, but does not level up
+            if monsterhp <= 0 and hp > 0:
+                diff += 4
+                XP.append(xp)
+                print ("good job, you won! Your xp increased at:",xp)
+                break
+
+            # hero dies
+            elif hp <= 0:
+                return "game over! Your score is:%.2f"%score, level
+                break
+        # hero wins, but levels up
+        if xp >= levelup:
+            decision = menu2()
+            if decision == 'N':
+                hp = (1,100)
+                dp = (1,100)
+                hp = max(hp)+20
+                dp = max(dp)+5
+                level +=1
+                print ("level=", level)
+            elif decision == 'Q':
+                print("your score is:%.2f"%score)
+                break
+        choice = menu()
+        if choice == 'F':
+            continue
+        elif choice == 'S':
+            if hp < 100:
+                hp += 0.1*max(0, hp)
+                xp -= 0.1*max(0, xp)
+            else:
+                print ("your energy is full")
+        elif choice == 'L':
+            if hp < 100:
+                hp += 0.2*max(0, hp)
+                xp -= 0.2*max(0, xp)
+            else:
+                print ("your energy is full")
+        elif choice == 'E':
+            return "Your score is:%.2f" %score
+            break
+
+print(game())
