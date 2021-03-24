@@ -4,13 +4,17 @@ import math
 level = 1
 hp = 0
 hpmax = 100
-dp = 100
+dp = 10
 xp = 0
 xpmax = 100
 diff = 20
 
 def levelup():
-    if level > 1:
-        level += 1
-        hpmax += 20
-        dp += 5
+    level += 1
+    hpmax += 20
+    dp += 5
+    hp = hpmax
+
+def monster():
+    monsterhp = random.randint(diff, 2*diff)
+    monsterdp = random.randint(diff/4, diff/2)
