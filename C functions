@@ -71,7 +71,7 @@ void fight()
 void rest(char amount;)
 {
     global hp, hpmax,  xp, xpmax;
-    if (amount == 'short')
+    if (amount == 's')
     {
         if (hp < hpmax)
         {
@@ -83,7 +83,7 @@ void rest(char amount;)
             printf("Your energy is full");
         }
     }
-    else if (amount == 'long')
+    else if (amount == 'l')
     {
         if (hp < hpmax)
         {
@@ -142,4 +142,51 @@ char menu2()
                 return choice;
         printf("Error: you did not give one of the choices, please try again\n\n");
     }
+}
+
+int main()
+{
+    printf("Let's Play! You will fight with a moster. Let's go!");
+    while (1)
+    {
+        if (just_leveled_up)
+        {
+            just_leveled_up = FALSE;
+            decision = menu2();
+            if (decision == 'N')
+            {
+                if not fight()
+                    break;
+            }
+            else if (decision == 'Q')
+            {
+                printf("your score is:%.2f", (level + xp/xpmax));
+                break;
+            }
+        }
+        
+        else
+        {
+            choice = menu();
+            if (choice == 'F')
+            {
+                if not fight()
+                    break;
+            }
+            else if (choice == 'S')
+            {
+                rest("s");
+            }
+            else if (choice == 'L')
+            {
+                rest("l");
+            }
+            else if (choice == 'E')
+            {
+                printf("your score is: %.2f", (level + xp/xpmax));
+                break;
+            }
+        }
+    }
+    return 0;
 }
