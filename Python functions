@@ -111,7 +111,8 @@ while True:
     else:
         choice = menu()
         if choice == 'F':
-            fight()
+            if not fight():
+                break
         elif choice == 'S':
             rest()
         elif choice == 'L':
