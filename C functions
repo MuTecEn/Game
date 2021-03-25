@@ -127,20 +127,20 @@ char menu2()
 {
     while (1)
     {
-        char choices[3] = "NQ";
-        char choice;
+        char decisions[3] = "NQ";
+        char decision;
         char buffer[80];
         printf("Please choose: \n");
         printf("[N] New Fight \n");
         printf("[Q] Quit \n");
         printf("--> Please enter your choice: ");
         scanf("%s", buffer);
-        choice=buffer[0];
-        if (choice>='a' && choice<='z')
-            choice = choice - 'a' + 'A';
+        decision=buffer[0];
+        if (decision>='a' && decision<='z')
+            decision = decision - 'a' + 'A';
         for (int i=0; i<5; i++)
-            if (choice==choices[i])
-                return choice;
+            if (decision==decisions[i])
+                return decision;
         printf("Error: you did not give one of the choices, please try again\n\n");
     }
 }
@@ -152,11 +152,11 @@ int main()
     {
         if (just_leveled_up)
         {
-            just_leveled_up = FALSE;
+            just_leveled_up = 0;
             decision = menu2();
             if (decision == 'N')
             {
-                if not fight()
+                if (not fight())
                     break;
             }
             else if (decision == 'Q')
@@ -171,7 +171,7 @@ int main()
             choice = menu();
             if (choice == 'F')
             {
-                if not fight()
+                if (not fight())
                     break;
             }
             else if (choice == 'S')
@@ -184,7 +184,7 @@ int main()
             }
             else if (choice == 'E')
             {
-                printf("your score is: %.2f", (level + xp/xpmax));
+                printf("your score is: %d", (level + xp/xpmax));
                 break;
             }
         }
