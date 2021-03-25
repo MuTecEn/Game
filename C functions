@@ -96,3 +96,50 @@ void rest(char amount;)
         }
     }
 }
+    
+/* this function prints the menu of choices after each fight that does not lead to levelup */
+char menu()
+{
+    while (1)
+    {
+        char choices[5] = "FSLE";
+        char choice;
+        char buffer[80];
+        printf("Please choose: \n");
+        printf("[F] Fight without resting\n");
+        printf("[S] Short rest, then fight\n");
+        printf("[L] Long rest, then fight\n");
+        printf("[E] Exit\n");
+        printf("--> Please enter your choice: ");
+        scanf("%s", buffer);
+        choice=buffer[0];
+        if (choice>='a' && choice<='z')
+            choice = choice - 'a' + 'A';
+        for (int i=0; i<5; i++)
+            if (choice==choices[i])
+                return choice;
+        printf("Error: you did not give one of the choices, please try again\n\n");
+    }
+}
+
+char menu2()
+{
+    while (1)
+    {
+        char choices[3] = "NQ";
+        char choice;
+        char buffer[80];
+        printf("Please choose: \n");
+        printf("[N] New Fight \n");
+        printf("[Q] Quit \n");
+        printf("--> Please enter your choice: ");
+        scanf("%s", buffer);
+        choice=buffer[0];
+        if (choice>='a' && choice<='z')
+            choice = choice - 'a' + 'A';
+        for (int i=0; i<5; i++)
+            if (choice==choices[i])
+                return choice;
+        printf("Error: you did not give one of the choices, please try again\n\n");
+    }
+}
