@@ -2,10 +2,11 @@ import random
 import math
 
 level = 1
-hp = 0
+hp = 100
 hpmax = 100
 dp = 10
 xp = 0
+xpmax = 100
 diff = 20
 monsterhp = 0
 monsterdp = 0
@@ -29,7 +30,7 @@ def monster():
     monsterdp = random.randint(diff/4, diff/2)
     
 def fight():
-    global monsterhp, hp, xp, diff
+    global monsterhp, hp, xp, xpmax
     monster()
     while monsterhp > 0 and hp > 0:
         monsterhp -= dp
@@ -90,7 +91,7 @@ def menu2():
         print("Please choose:")
         print("[N] New Fight")
         print("[Q] Quit")
-        decision = input("-> Please enter your choice: ")
+        decision = input("--> Please enter your choice: ")
         decision = decision.upper()[0]
         if decision in choices:
             return decision
@@ -108,6 +109,7 @@ while True:
         elif decision == 'Q':
             print ("your score is:%.2f" % (level + xp/levelup))
             break
+    
     else:
         choice = menu()
         if choice == 'F':
@@ -116,7 +118,8 @@ while True:
         elif choice == 'S':
             rest("short")
         elif choice == 'L':
-            rest("long"):
+            rest("long")
         elif choice == 'E':
             print("your score is: %.2f" % (level + xp/levelup))
             break
+    
