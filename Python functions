@@ -1,5 +1,4 @@
 import random
-import math
 
 level = 1
 hp = 100
