@@ -1,0 +1,27 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+int level = 1;
+int hp = 100;
+int hpmax = 100;
+int dp = 10;
+int xp = 0;
+int xpmax = 100;
+int diff = 20;
+int monsterhp = 0;
+int monsterdp = 0;
+int just_leveled_up = True;
+
+void levelup()
+{
+    global just_leveled_up, xp, level, hpmax, dp, hp, hpmax, xpmax;
+    just_leveled_up = True;
+    xp = 0;
+    level += 1;
+    hpmax += 20;
+    dp += 5;
+    hp = hpmax;
+    xpmax = 50 * 2 ** level;
+    printf("You leveled up! Your HP now is %d and your DP is %d", hp, dp);
+}
