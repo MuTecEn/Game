@@ -114,11 +114,9 @@ while True:
             if not fight():
                 break
         elif choice == 'S':
-            if rest():
-                amount = "short"
+            rest("short")
         elif choice == 'L':
-            if rest():
-                amount = "long"
+            rest("long"):
         elif choice == 'E':
             print("your score is: %.2f" % (level + xp/levelup))
             break
