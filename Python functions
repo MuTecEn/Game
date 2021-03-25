@@ -23,18 +23,13 @@ def levelup():
     print("You leveled up! Your HP now is %d and your DP is %d" % (hp, dp))
 
 def monster():
-    global monsterhp
-    global monsterdp
-    global mosterhpmax
+    global monsterhp, monsterdp, monsterhpmax
     monsterhp = random.randint(diff, 2*diff)
     monsterhpmax = monsterhp
     monsterdp = random.randint(diff/4, diff/2)
     
 def fight():
-    global monsterhp
-    global hp
-    global xp
-    global diff
+    global monsterhp, hp, xp, diff
     monster()
     while monsterhp > 0 and hp > 0:
         monsterhp -= dp
@@ -57,10 +52,7 @@ def fight():
         
         
 def rest(amount):
-    global hp
-    global hpmax
-    global xp
-    global xpmax
+    global hp, hpmax,  xp, xpmax
     if amount == 'short':
         if hp < hpmax:
             hp = min(hp + 0.1 * hpmax, hpmax)
