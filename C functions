@@ -10,25 +10,26 @@ int xp = 0;
 int xpmax = 100;
 int diff = 20;
 int monsterhp = 0;
+int monsterhpmax;
 int monsterdp = 0;
-int just_leveled_up = TRUE;
+int just_leveled_up = 1;
 
 void levelup()
 {
-    global just_leveled_up, xp, level, hpmax, dp, hp, hpmax, xpmax;
-    just_leveled_up = True;
+    just_leveled_up, xp, level, hpmax, dp, hp, hpmax, xpmax;
+    just_leveled_up = 1;
     xp = 0;
     level += 1;
     hpmax += 20;
     dp += 5;
     hp = hpmax;
-    xpmax = 50 * 2 ** level;
+    xpmax = 50 * 2 ^ level;
     printf("You leveled up! Your HP now is %d and your DP is %d", hp, dp);
 }
 
 void monster()
 {
-    global monsterhp, monsterdp, monsterhpmax;
+    monsterhp, monsterdp, monsterhpmax;
     monsterhp = diff + rand() % 2*diff;
     monsterhpmax = monsterhp;
     monsterdp = diff/4 + rand() % diff/2;
@@ -36,7 +37,7 @@ void monster()
     
 void fight()
 {
-    global monsterhp, hp, xp, xpmax, diff;
+    monsterhp, hp, xp, xpmax, diff;
     monster();
     while (monsterhp > 0) && (hp > 0)
     {
@@ -70,7 +71,7 @@ void fight()
         
 void rest(char amount;)
 {
-    global hp, hpmax,  xp, xpmax;
+    hp, hpmax,  xp, xpmax;
     if (amount == 's')
     {
         if (hp < hpmax)
