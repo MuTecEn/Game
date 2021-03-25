@@ -34,7 +34,7 @@ def fight():
     monster()
     while monsterhp > 0 and hp > 0:
         monsterhp -= dp
-        print("Hero attacks: Monster %d/%d HP" % (monsterhp, max(monsterhpmax, 0)))
+        print("Hero attacks: Monster %d/%d HP" % (max(0, monsterhp), monsterhpmax))
         if monsterhp <= 0:
             monsterhp = 0
             xp += (monsterhp + monsterdp)
@@ -45,10 +45,10 @@ def fight():
             
         else:
             hp -= monsterdp
-            print("Monster attacks: Your %d/%d HP" % (hp, max(hpmax, 0)))
+            print("Monster attacks: Your %d/%d HP" % (max(0, hp), hpmax))
         if hp <= 0:
             hp = 0
-            print("Game over. Your score is:%.2f" % (level + xp/levelup))
+            print("Game over. Your score is:%.2f" % (level + xp/xpmax))
             return False
         
         
@@ -107,7 +107,7 @@ while True:
             if not fight():
                 break
         elif decision == 'Q':
-            print ("your score is:%.2f" % (level + xp/levelup))
+            print ("your score is:%.2f" % (level + xp/xpmax))
             break
     
     else:
@@ -120,6 +120,17 @@ while True:
         elif choice == 'L':
             rest("long")
         elif choice == 'E':
-            print("your score is: %.2f" % (level + xp/levelup))
+            print("your score is: %.2f" % (level + xp/xpmax))
             break
+    
+    
+
+    
+    
+    
+ 
+        
+
+
+
     
