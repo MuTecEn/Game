@@ -30,7 +30,7 @@ def monster():
     monsterdp = random.randint(diff/4, diff/2)
     
 def fight():
-    global monsterhp, hp, xp, xpmax
+    global monsterhp, hp, xp, xpmax, diff
     monster()
     while monsterhp > 0 and hp > 0:
         monsterhp -= dp
