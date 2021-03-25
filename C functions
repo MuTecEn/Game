@@ -66,3 +66,33 @@ void fight()
         }
     }
 }
+        
+        
+void rest(char amount;)
+{
+    global hp, hpmax,  xp, xpmax;
+    if (amount == 'short')
+    {
+        if (hp < hpmax)
+        {
+            hp = min(hp + 0.1 * hpmax, hpmax);
+            xp = max(xp - 0.1 * xpmax, 0);
+        }
+        else
+        {
+            printf("Your energy is full");
+        }
+    }
+    else if (amount == 'long')
+    {
+        if (hp < hpmax)
+        {
+            hp = min(hp + 0.2 * hpmax, hpmax);
+            xp = max(xp - 0.2 * xpmax, 0);
+        }
+        else
+        {
+            printf("Your energy is full");
+        }
+    }
+}
